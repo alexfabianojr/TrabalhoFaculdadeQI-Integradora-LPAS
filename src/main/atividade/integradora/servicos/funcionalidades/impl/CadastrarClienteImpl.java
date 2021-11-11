@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class CadastrarClienteImpl implements CadastrarCliente {
 
     @Override
-    public void registrarPainel(final Scanner sc, final ControleClientes controleClientes) throws Exception {
+    public void painelRegistrar(final Scanner sc, final ControleClientes controleClientes) throws Exception {
         ClienteFactory clienteFactory = new ClienteFactoryImpl();
         Cliente cliente;
         System.out.println("Inserir o tipo do cliente");

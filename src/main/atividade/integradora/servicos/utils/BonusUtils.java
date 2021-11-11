@@ -7,11 +7,22 @@ import main.atividade.integradora.entity.ClienteB;
 
 import java.util.List;
 
-public interface BonusUtils {
+public class BonusUtils {
 
-    <T extends Cliente> Bonus proximoBonusAtivo(T cliente) throws Exception;
+    public <T extends Cliente> Bonus proximoBonusAtivo(T cliente) throws Exception {
+        return cliente
+                .getBonusCompras()
+                .stream()
+                .filter(bonus -> !bonus.isUsado())
+                .findFirst()
+                .orElseThrow(() -> new Exception("Nenhum bonus ativo foi encontrado"));
+    }
 
-    List<Bonus> resgatarBonusComprasFuturas(ClienteA clienteA);
+    public List<Bonus> resgatarBonusComprasFuturas(ClienteA clienteA) {
+        return null;
+    }
 
-    List<Bonus> resgatarBonusComprasFuturas(ClienteB clienteB);
+    public List<Bonus> resgatarBonusComprasFuturas(ClienteB clienteB) {
+        return null;
+    }
 }

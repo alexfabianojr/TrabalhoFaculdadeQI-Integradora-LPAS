@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 public abstract class Cliente {
 
@@ -12,9 +11,31 @@ public abstract class Cliente {
     private String nome;
     private List<Venda> vendas;
     private List<Venda> compras;
+    private List<Produto> produtos;
     private LocalDate dataCadastro = LocalDate.now();
     private BigDecimal limiteCreditoBase;
     private LinkedList<Bonus> bonusCompras;
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    public void addProduto(Produto produto) {
+        this.produtos.add(produto);
+    }
+
+    public void removeProduto(String id) {
+        this.produtos
+                .remove(produtos
+                        .stream()
+                        .filter(produto -> produto.getId().equals(id))
+                        .findFirst()
+                        .orElseThrow());
+    }
 
     public String getId() {
         return id;
@@ -38,6 +59,14 @@ public abstract class Cliente {
 
     public List<Venda> getCompras() {
         return compras;
+    }
+
+    public void addVenda(Venda venda) {
+        this.vendas.add(venda);
+    }
+
+    public void addCompra(Venda venda) {
+        this.compras.add(venda);
     }
 
     public LocalDate getDataCadastro() {

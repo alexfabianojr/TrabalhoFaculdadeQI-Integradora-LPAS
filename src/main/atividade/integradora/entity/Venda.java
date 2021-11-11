@@ -7,19 +7,31 @@ public class Venda {
 
     private final String id = UUID.randomUUID().toString();
     private Produto produto;
-    private Cliente cliente;
+    private Cliente clienteComprador;
     private Long quantidade;
     private LocalDateTime dataCompra;
     private boolean isCancelamento;
+    private Cliente clienteVendedor;
+    private boolean isCompraPaga;
 
     private Venda() {}
 
-    public Venda(Produto produto, Cliente cliente, Long quantidade) {
+    public Cliente getClienteVendedor() {
+        return clienteVendedor;
+    }
+
+    public void setClienteVendedor(Cliente clienteVendedor) {
+        this.clienteVendedor = clienteVendedor;
+    }
+
+    public Venda(Produto produto, Cliente clienteComprador, Cliente clienteVendedor, Long quantidade) {
         this.produto = produto;
-        this.cliente = cliente;
+        this.clienteComprador = clienteComprador;
+        this.clienteVendedor = clienteVendedor;
         this.quantidade = quantidade;
         this.isCancelamento = false;
         this.dataCompra = LocalDateTime.now();
+        this.isCompraPaga = false;
     }
 
     public String getId() {
@@ -34,12 +46,12 @@ public class Venda {
         this.produto = produto;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getClienteComprador() {
+        return clienteComprador;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setClienteComprador(Cliente clienteComprador) {
+        this.clienteComprador = clienteComprador;
     }
 
     public Long getQuantidade() {
@@ -64,5 +76,13 @@ public class Venda {
 
     public void setCancelamento(boolean cancelamento) {
         isCancelamento = cancelamento;
+    }
+
+    public boolean isCompraPaga() {
+        return isCompraPaga;
+    }
+
+    public void setCompraPaga(boolean compraPaga) {
+        isCompraPaga = compraPaga;
     }
 }
