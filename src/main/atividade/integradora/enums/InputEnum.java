@@ -5,8 +5,10 @@ public enum InputEnum {
     ENCERRAR_PROGRAMA(0),
     CADASTRAR_USUARIO(1),
     REALIZAR_COMPRA(2),
-    REALIZAR_PAGAMENTO(3),
-    LISTAR_CLIENTES(4);
+    REALIZAR_PAGAMENTO(-1),
+    LISTAR_CLIENTES(3),
+    ADICIONAR_PRODUTO(4),
+    REMOVER_PRODUTO(5);
 
     private final int valor;
 

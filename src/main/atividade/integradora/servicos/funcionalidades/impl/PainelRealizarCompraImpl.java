@@ -1,9 +1,9 @@
 package main.atividade.integradora.servicos.funcionalidades.impl;
 
-import main.atividade.integradora.servicos.funcionalidades.ControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.PainelControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.PainelExecutarCompra;
 import main.atividade.integradora.servicos.funcionalidades.PainelProduto;
 import main.atividade.integradora.servicos.funcionalidades.PainelRealizarCompra;
-import main.atividade.integradora.servicos.funcionalidades.ExecutarCompra;
 
 import java.util.Scanner;
 
@@ -15,9 +15,9 @@ public class PainelRealizarCompraImpl implements PainelRealizarCompra {
     private static final String idVendedorMensagem = "-> Insira o ID do vendedor do produto:";
 
     @Override
-    public void comprar(final Scanner sc, final ControleClientes controleClientes) {
+    public void comprar(final Scanner sc, final PainelControleClientes controleClientes) {
         PainelProduto painelProduto = new PainelProdutoImpl();
-        ExecutarCompra executarCompra = new ExecutarCompraImpl();
+        PainelExecutarCompra painelExecutarCompra = new PainelExecutarCompraImpl();
         painelProduto.listarProdutosPorClientes(controleClientes);
         System.out.println(idClienteMensagem);
         String idCliente = sc.next();
@@ -28,8 +28,12 @@ public class PainelRealizarCompraImpl implements PainelRealizarCompra {
         System.out.println(idVendedorMensagem);
         String idVendedor = sc.next();
 
-        executarCompra.isOperacaoSucesso(idCliente, idProduto, quantidadeCompra, idVendedor, controleClientes);
+        final boolean isOperacaoSucesso = painelExecutarCompra.isOperacaoSucesso(idCliente, idProduto, quantidadeCompra, idVendedor, controleClientes);
 
-
+        if (isOperacaoSucesso) {
+            System.out.println("Compra realizada com sucesso");
+        } else {
+            System.out.println("Erro ao executar a compra");
+        }
     }
 }

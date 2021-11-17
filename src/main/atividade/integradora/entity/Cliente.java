@@ -13,7 +13,8 @@ public abstract class Cliente {
     private List<Venda> compras;
     private List<Produto> produtos;
     private LocalDate dataCadastro = LocalDate.now();
-    private BigDecimal limiteCreditoBase;
+    private BigDecimal limiteCredito;
+    private BigDecimal limiteCreditoUsado;
     private LinkedList<Bonus> bonusCompras;
 
     public List<Produto> getProdutos() {
@@ -26,15 +27,6 @@ public abstract class Cliente {
 
     public void addProduto(Produto produto) {
         this.produtos.add(produto);
-    }
-
-    public void removeProduto(String id) {
-        this.produtos
-                .remove(produtos
-                        .stream()
-                        .filter(produto -> produto.getId().equals(id))
-                        .findFirst()
-                        .orElseThrow());
     }
 
     public String getId() {
@@ -73,8 +65,8 @@ public abstract class Cliente {
         return dataCadastro;
     }
 
-    public BigDecimal getLimiteCreditoBase() {
-        return limiteCreditoBase;
+    public BigDecimal getLimiteCredito() {
+        return limiteCredito;
     }
 
     public List<Bonus> getBonusCompras() {
@@ -93,11 +85,19 @@ public abstract class Cliente {
         this.dataCadastro = dataCadastro;
     }
 
-    public void setLimiteCreditoBase(BigDecimal limiteCreditoBase) {
-        this.limiteCreditoBase = limiteCreditoBase;
+    public void setLimiteCredito(BigDecimal limiteCredito) {
+        this.limiteCredito = limiteCredito;
     }
 
     public void setBonusCompras(LinkedList<Bonus> bonusCompras) {
         this.bonusCompras = bonusCompras;
+    }
+
+    public BigDecimal getLimiteCreditoUsado() {
+        return limiteCreditoUsado;
+    }
+
+    public void setLimiteCreditoUsado(BigDecimal limiteCreditoUsado) {
+        this.limiteCreditoUsado = limiteCreditoUsado;
     }
 }

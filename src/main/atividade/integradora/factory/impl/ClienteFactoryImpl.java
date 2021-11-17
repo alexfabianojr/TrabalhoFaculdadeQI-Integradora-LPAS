@@ -13,7 +13,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
     public ClienteA tipoA(String nome) {
         ClienteA clienteA = new ClienteA();
         clienteA.setNome(nome);
-        clienteA.setLimiteCreditoBase(BigDecimal.valueOf(10000.0));
+        clienteA.setLimiteCredito(BigDecimal.valueOf(10000.0));
         return clienteA;
     }
 
@@ -21,7 +21,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
     public ClienteB tipoB(String nome) {
         ClienteB clienteB = new ClienteB();
         clienteB.setNome(nome);
-        clienteB.setLimiteCreditoBase(BigDecimal.valueOf(5000.0));
+        clienteB.setLimiteCredito(BigDecimal.valueOf(5000.0));
         return clienteB;
     }
 
@@ -29,7 +29,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
     public ClienteC tipoC(String nome) {
         ClienteC clienteC = new ClienteC();
         clienteC.setNome(nome);
-        clienteC.setLimiteCreditoBase(BigDecimal.valueOf(1000.0));
+        clienteC.setLimiteCredito(BigDecimal.valueOf(1000.0));
         return null;
     }
 }

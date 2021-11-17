@@ -1,6 +1,6 @@
 package main.atividade.integradora.servicos.funcionalidades;
 
-public interface ExecutarCompra {
+public interface PainelExecutarCompra {
     boolean isOperacaoSucesso(final String idCliente, final String idProduto, final int quantidadeCompra,
-                              final String idVendedor, final ControleClientes controleClientes);
+                              final String idVendedor, final PainelControleClientes controleClientes);
 }

@@ -4,22 +4,44 @@ import main.atividade.integradora.entity.Cliente;
 import main.atividade.integradora.enums.TipoClienteEnum;
 import main.atividade.integradora.factory.ClienteFactory;
 import main.atividade.integradora.factory.impl.ClienteFactoryImpl;
-import main.atividade.integradora.servicos.funcionalidades.CadastrarCliente;
-import main.atividade.integradora.servicos.funcionalidades.ControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.PainelControleClientes;
 
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
-public class CadastrarClienteImpl implements CadastrarCliente {
+public class PainelControleClientesImpl implements PainelControleClientes {
+
+    private final List<Cliente> clientes = Collections.synchronizedList(new ArrayList<>());
 
     @Override
-    public void painelRegistrar(final Scanner sc, final ControleClientes controleClientes) throws Exception {
+    public void registrarCliente(Cliente cliente) {
+        synchronized (this) {
+            cliente.setId(UUID.randomUUID().toString());
+        }
+        clientes.add(cliente);
+    }
+
+    @Override
+    public Cliente buscarCliente(String id) {
+        return clientes
+                .parallelStream()
+                .filter(t -> t.getId().equals(id))
+                .findAny()
+                .orElseThrow();
+    }
+
+    @Override
+    public List<Cliente> listarTodosClientes() {
+        return clientes;
+    }
+
+    @Override
+    public void registrarNovoCliente(Scanner sc, PainelControleClientes controleClientes) throws Exception {
         ClienteFactory clienteFactory = new ClienteFactoryImpl();
         Cliente cliente;
         System.out.println("Inserir o tipo do cliente");
         TipoClienteEnum tipoClienteEnum = TipoClienteEnum.get(sc.nextInt());
         System.out.println("Nome do cliente: ");
-        String nome = sc.next();
+        String nome = sc.nextLine();
         switch (tipoClienteEnum) {
             case A -> cliente = clienteFactory.tipoA(nome);
             case B -> cliente = clienteFactory.tipoB(nome);

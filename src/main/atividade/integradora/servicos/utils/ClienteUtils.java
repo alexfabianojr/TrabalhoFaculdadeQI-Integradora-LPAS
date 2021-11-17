@@ -1,11 +1,11 @@
 package main.atividade.integradora.servicos.utils;
 
 import main.atividade.integradora.entity.Cliente;
-import main.atividade.integradora.servicos.funcionalidades.ControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.PainelControleClientes;
 
 public class ClienteUtils {
 
-    public static Cliente getClienteById(String idCliente, ControleClientes controleClientes) {
+    public static Cliente getClienteById(String idCliente, PainelControleClientes controleClientes) {
         return controleClientes
                 .listarTodosClientes()
                 .parallelStream()
