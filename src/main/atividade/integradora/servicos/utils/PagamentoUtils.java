@@ -1,13 +1,12 @@
 package main.atividade.integradora.servicos.utils;
 
 import main.atividade.integradora.entity.Cliente;
-import main.atividade.integradora.entity.Venda;
+
+import java.math.BigDecimal;
 
 public class PagamentoUtils {
 
-    public static <T extends Cliente> void realizarTransacao(T comprador, T vendedor, Venda venda) {
-
-
-
+    public static BigDecimal pagarCreditoUsado(Cliente Cliente, BigDecimal valorPagamento) {
+        return Cliente.getLimiteCreditoUsado().subtract(valorPagamento);
     }
 }

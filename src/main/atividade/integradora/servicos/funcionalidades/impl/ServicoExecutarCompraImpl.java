@@ -3,19 +3,19 @@ package main.atividade.integradora.servicos.funcionalidades.impl;
 import main.atividade.integradora.entity.Cliente;
 import main.atividade.integradora.entity.Produto;
 import main.atividade.integradora.entity.Venda;
-import main.atividade.integradora.servicos.funcionalidades.PainelControleClientes;
-import main.atividade.integradora.servicos.funcionalidades.PainelExecutarCompra;
+import main.atividade.integradora.servicos.funcionalidades.ServicoControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.ServicoExecutarCompra;
 import main.atividade.integradora.servicos.utils.ClienteUtils;
 import main.atividade.integradora.servicos.utils.LimiteCreditoUtils;
 import main.atividade.integradora.servicos.utils.ProdutoUtils;
 
 import java.math.BigDecimal;
 
-public class PainelExecutarCompraImpl implements PainelExecutarCompra {
+public class ServicoExecutarCompraImpl implements ServicoExecutarCompra {
 
     @Override
     public boolean isOperacaoSucesso(final String idCliente, final String idProduto, final int quantidadeCompra,
-                                     final String idVendedor, final PainelControleClientes controleClientes) {
+                                     final String idVendedor, final ServicoControleClientes controleClientes) {
         boolean isSucesso = false;
         try {
             final Cliente clienteComprador = ClienteUtils.getClienteById(idCliente, controleClientes);
@@ -38,7 +38,7 @@ public class PainelExecutarCompraImpl implements PainelExecutarCompra {
         return isSucesso;
     }
 
-    private void adicionarVendaParaCliente(final String idVendedor, final PainelControleClientes controleClientes, final Venda venda) {
+    private void adicionarVendaParaCliente(final String idVendedor, final ServicoControleClientes controleClientes, final Venda venda) {
         controleClientes
                 .listarTodosClientes()
                 .forEach(cliente -> {
@@ -48,7 +48,7 @@ public class PainelExecutarCompraImpl implements PainelExecutarCompra {
                 });
     }
 
-    private void adicionarCompraParaCliente(final String idCliente, final PainelControleClientes controleClientes,
+    private void adicionarCompraParaCliente(final String idCliente, final ServicoControleClientes controleClientes,
                                             final BigDecimal valorTotalCompra, final Venda venda) {
         controleClientes
                 .listarTodosClientes()

@@ -4,11 +4,11 @@ import main.atividade.integradora.entity.Cliente;
 import main.atividade.integradora.enums.TipoClienteEnum;
 import main.atividade.integradora.factory.ClienteFactory;
 import main.atividade.integradora.factory.impl.ClienteFactoryImpl;
-import main.atividade.integradora.servicos.funcionalidades.PainelControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.ServicoControleClientes;
 
 import java.util.*;
 
-public class PainelControleClientesImpl implements PainelControleClientes {
+public class ServicoControleClientesImpl implements ServicoControleClientes {
 
     private final List<Cliente> clientes = Collections.synchronizedList(new ArrayList<>());
 
@@ -35,7 +35,7 @@ public class PainelControleClientesImpl implements PainelControleClientes {
     }
 
     @Override
-    public void registrarNovoCliente(Scanner sc, PainelControleClientes controleClientes) throws Exception {
+    public void registrarNovoCliente(Scanner sc, ServicoControleClientes controleClientes) throws Exception {
         ClienteFactory clienteFactory = new ClienteFactoryImpl();
         Cliente cliente;
         System.out.println("Inserir o tipo do cliente");

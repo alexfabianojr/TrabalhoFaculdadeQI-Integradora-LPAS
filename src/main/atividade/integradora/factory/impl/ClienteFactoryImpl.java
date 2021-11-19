@@ -14,6 +14,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
         ClienteA clienteA = new ClienteA();
         clienteA.setNome(nome);
         clienteA.setLimiteCredito(BigDecimal.valueOf(10000.0));
+        clienteA.setLimiteCreditoUsado(BigDecimal.ZERO);
         return clienteA;
     }
 
@@ -22,6 +23,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
         ClienteB clienteB = new ClienteB();
         clienteB.setNome(nome);
         clienteB.setLimiteCredito(BigDecimal.valueOf(5000.0));
+        clienteB.setLimiteCreditoUsado(BigDecimal.ZERO);
         return clienteB;
     }
 
@@ -30,6 +32,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
         ClienteC clienteC = new ClienteC();
         clienteC.setNome(nome);
         clienteC.setLimiteCredito(BigDecimal.valueOf(1000.0));
-        return null;
+        clienteC.setLimiteCreditoUsado(BigDecimal.ZERO);
+        return clienteC;
     }
 }

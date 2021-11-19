@@ -45,4 +45,6 @@ public class Produto {
     public void setVendedor(Cliente vendedor) {
         this.vendedor = vendedor;
     }
+
+
 }

@@ -2,16 +2,16 @@ package main.atividade.integradora.servicos.funcionalidades.impl;
 
 import main.atividade.integradora.entity.Cliente;
 import main.atividade.integradora.entity.Produto;
-import main.atividade.integradora.servicos.funcionalidades.PainelControleClientes;
-import main.atividade.integradora.servicos.funcionalidades.PainelProduto;
+import main.atividade.integradora.servicos.funcionalidades.ServicoControleClientes;
+import main.atividade.integradora.servicos.funcionalidades.ServicoProduto;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class PainelProdutoImpl implements PainelProduto {
+public class ServicoProdutoImpl implements ServicoProduto {
 
     @Override
-    public void listarProdutosPorClientes(final PainelControleClientes controleClientes) {
+    public void listarProdutosPorClientes(final ServicoControleClientes controleClientes) {
         String linhaDoPainel = "Produto Nome: %s - Produto Preco: 0.2%f - Produto ID: %s - Vendedor ID: %s - Vendedor Nome: %s \n";
         controleClientes
                 .listarTodosClientes()
@@ -22,7 +22,7 @@ public class PainelProdutoImpl implements PainelProduto {
     }
 
     @Override
-    public void adicionar(final Scanner sc, final PainelControleClientes controleClientes) {
+    public void adicionar(final Scanner sc, final ServicoControleClientes controleClientes) {
         controleClientes.listarTodosClientes();
         System.out.println("--------------------------------------------------");
         System.out.println("Cadastrar novo produto");
@@ -38,7 +38,7 @@ public class PainelProdutoImpl implements PainelProduto {
         System.out.println("--------------------------------------------------");
     }
 
-    private void adicionarProdutoNoCliente(final PainelControleClientes controleClientes, final String idVendedor, final Produto produto) {
+    private void adicionarProdutoNoCliente(final ServicoControleClientes controleClientes, final String idVendedor, final Produto produto) {
         controleClientes
                 .listarTodosClientes()
                 .forEach(cliente -> {
@@ -50,7 +50,7 @@ public class PainelProdutoImpl implements PainelProduto {
     }
 
     @Override
-    public void remover(final Scanner sc, final PainelControleClientes controleClientes) {
+    public void remover(final Scanner sc, final ServicoControleClientes controleClientes) {
         controleClientes.listarTodosClientes();
         System.out.println("--------------------------------------------------");
         System.out.println("Remover produto");
@@ -61,7 +61,7 @@ public class PainelProdutoImpl implements PainelProduto {
         removerProdutoNoCliente(controleClientes, idProduto, idVendedor);
     }
 
-    private void removerProdutoNoCliente(final PainelControleClientes controleClientes, final String idProduto, final String idVendedor) {
+    private void removerProdutoNoCliente(final ServicoControleClientes controleClientes, final String idProduto, final String idVendedor) {
         controleClientes
                 .listarTodosClientes()
                 .forEach(cliente -> {

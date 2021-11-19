@@ -85,4 +85,6 @@ public class Venda {
     public void setCompraPaga(boolean compraPaga) {
         isCompraPaga = compraPaga;
     }
+
+
 }

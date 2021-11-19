@@ -34,4 +34,13 @@ public class Bonus {
     public void setUsado(boolean usado) {
         this.usado = usado;
     }
+
+    @Override
+    public String toString() {
+        return "Bonus{" +
+                "id='" + id + '\'' +
+                ", perc=" + perc +
+                ", usado=" + usado +
+                '}';
+    }
 }

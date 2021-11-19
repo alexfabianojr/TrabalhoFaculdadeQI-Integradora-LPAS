@@ -2,20 +2,42 @@ package main.atividade.integradora.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.StringJoiner;
 
 public abstract class Cliente {
 
     private String id;
     private String nome;
-    private List<Venda> vendas;
-    private List<Venda> compras;
-    private List<Produto> produtos;
+    private List<Venda> vendas = new ArrayList<>();
+    private List<Venda> compras = new ArrayList<>();
+    private List<Produto> produtos = new ArrayList<>();
     private LocalDate dataCadastro = LocalDate.now();
     private BigDecimal limiteCredito;
     private BigDecimal limiteCreditoUsado;
-    private LinkedList<Bonus> bonusCompras;
+    private LinkedList<Bonus> bonusCompras = new LinkedList<>();
+
+    public void addVenda(Venda venda) {
+        this.vendas.add(venda);
+    }
+
+    public void addCompra(Venda venda) {
+        this.compras.add(venda);
+    }
+
+    public void addProduto(Produto produto) {
+        this.produtos.add(produto);
+    }
+
+    public void addBonus(Bonus bonus) {
+        this.bonusCompras.add(bonus);
+    }
+
+    public void removerBonus(int index) {
+        this.bonusCompras.remove(index);
+    }
 
     public List<Produto> getProdutos() {
         return produtos;
@@ -23,10 +45,6 @@ public abstract class Cliente {
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
-    }
-
-    public void addProduto(Produto produto) {
-        this.produtos.add(produto);
     }
 
     public String getId() {
@@ -51,14 +69,6 @@ public abstract class Cliente {
 
     public List<Venda> getCompras() {
         return compras;
-    }
-
-    public void addVenda(Venda venda) {
-        this.vendas.add(venda);
-    }
-
-    public void addCompra(Venda venda) {
-        this.compras.add(venda);
     }
 
     public LocalDate getDataCadastro() {
@@ -99,5 +109,15 @@ public abstract class Cliente {
 
     public void setLimiteCreditoUsado(BigDecimal limiteCreditoUsado) {
         this.limiteCreditoUsado = limiteCreditoUsado;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Cliente.class.getSimpleName() + "[", "]")
+                .add("id='" + id + "'")
+                .add("nome='" + nome + "'")
+                .add("limiteCredito=" + limiteCredito)
+                .add("limiteCreditoUsado=" + limiteCreditoUsado)
+                .toString();
     }
 }
