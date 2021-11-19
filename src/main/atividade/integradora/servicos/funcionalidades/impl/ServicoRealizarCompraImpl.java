@@ -27,9 +27,7 @@ public class ServicoRealizarCompraImpl implements ServicoRealizarCompra {
         int quantidadeCompra = sc.nextInt();
         System.out.println(idVendedorMensagem);
         String idVendedor = sc.next();
-
         final boolean isOperacaoSucesso = servicoExecutarCompra.isOperacaoSucesso(idCliente, idProduto, quantidadeCompra, idVendedor, controleClientes);
-
         if (isOperacaoSucesso) {
             System.out.println("Compra realizada com sucesso");
         } else {
