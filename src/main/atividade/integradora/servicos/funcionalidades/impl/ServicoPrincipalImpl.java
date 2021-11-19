@@ -14,10 +14,11 @@ public class ServicoPrincipalImpl implements ServicoPrincipal {
             1 - Cadastrar Usuario
             2 - Adicionar Produto
             3 - Realizar Compra
-            4 - Remover produto
-            5 - Listar Clientes
-            6 - Listar Clientes (DETALHES FINANCEIROS)
-            7 - Mockar dados para teste""";
+            4 - Realizar Pagamento
+            5 - Remover produto
+            6 - Listar Clientes
+            7 - Listar Clientes (DETALHES FINANCEIROS)
+            8 - Mockar dados para teste""";
 
     @Override
     public boolean rodarPrograma(final Scanner sc, final ServicoControleClientes controleClientes) throws Exception {

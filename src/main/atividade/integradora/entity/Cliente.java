@@ -1,5 +1,7 @@
 package main.atividade.integradora.entity;
 
+import main.atividade.integradora.enums.TipoClienteEnum;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ public abstract class Cliente {
     private BigDecimal limiteCredito;
     private BigDecimal limiteCreditoUsado;
     private LinkedList<Bonus> bonusCompras = new LinkedList<>();
+    private TipoClienteEnum tipoClienteEnum;
+    private BigDecimal pagamentosAcumuladosParaBonus;
 
     public void addVenda(Venda venda) {
         this.vendas.add(venda);
@@ -33,6 +37,10 @@ public abstract class Cliente {
 
     public void addBonus(Bonus bonus) {
         this.bonusCompras.add(bonus);
+    }
+
+    public void addAllBonus(List<Bonus> bonuses) {
+        this.bonusCompras.addAll(bonuses);
     }
 
     public void removerBonus(int index) {
@@ -111,6 +119,22 @@ public abstract class Cliente {
         this.limiteCreditoUsado = limiteCreditoUsado;
     }
 
+    public TipoClienteEnum getTipoClienteEnum() {
+        return tipoClienteEnum;
+    }
+
+    public void setTipoClienteEnum(TipoClienteEnum tipoClienteEnum) {
+        this.tipoClienteEnum = tipoClienteEnum;
+    }
+
+    public BigDecimal getPagamentosAcumuladosParaBonus() {
+        return pagamentosAcumuladosParaBonus;
+    }
+
+    public void setPagamentosAcumuladosParaBonus(BigDecimal pagamentosAcumuladosParaBonus) {
+        this.pagamentosAcumuladosParaBonus = pagamentosAcumuladosParaBonus;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Cliente.class.getSimpleName() + "[", "]")
@@ -118,6 +142,7 @@ public abstract class Cliente {
                 .add("nome='" + nome + "'")
                 .add("limiteCredito=" + limiteCredito)
                 .add("limiteCreditoUsado=" + limiteCreditoUsado)
+                .add("quantidadeBonus=" + bonusCompras.size())
                 .toString();
     }
 }

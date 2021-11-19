@@ -15,10 +15,12 @@ public class ServicoProdutoImpl implements ServicoProduto {
         String linhaDoPainel = "Produto Nome: %s - Produto Preco: 0.2%f - Produto ID: %s - Vendedor ID: %s - Vendedor Nome: %s \n";
         controleClientes
                 .listarTodosClientes()
-                .forEach(cliente -> cliente
-                        .getProdutos()
-                        .forEach(produto -> System.out.printf(linhaDoPainel, produto.getNome(), produto.getValor(), produto.getId(), cliente.getId(), cliente.getNome()))
-                );
+                .forEach(cliente -> {
+                    System.out.println("\n--\n");
+                    cliente
+                            .getProdutos()
+                            .forEach(produto -> System.out.printf(linhaDoPainel, produto.getNome(), produto.getValor(), produto.getId(), cliente.getId(), cliente.getNome()));
+                });
     }
 
     @Override

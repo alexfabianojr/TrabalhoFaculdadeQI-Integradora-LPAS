@@ -13,6 +13,7 @@ public class Venda {
     private boolean isCancelamento;
     private Cliente clienteVendedor;
     private boolean isCompraPaga;
+    private Bonus bonusAplicado;
 
     private Venda() {}
 
@@ -86,5 +87,11 @@ public class Venda {
         isCompraPaga = compraPaga;
     }
 
+    public Bonus getBonusAplicado() {
+        return bonusAplicado;
+    }
 
+    public void setBonusAplicado(Bonus bonusAplicado) {
+        this.bonusAplicado = bonusAplicado;
+    }
 }

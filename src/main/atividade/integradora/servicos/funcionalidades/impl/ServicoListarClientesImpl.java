@@ -9,6 +9,7 @@ public class ServicoListarClientesImpl implements ServicoListarClientes {
     public void listar(final ServicoControleClientes controleClientes) {
         System.out.println("Total de clientes: " + controleClientes.listarTodosClientes().size());
         for (Cliente cliente : controleClientes.listarTodosClientes()) {
+            System.out.println("\n--\n");
             System.out.println("Id: " + cliente.getId() + " Nome: " + cliente.getNome());
         }
     }
@@ -17,7 +18,7 @@ public class ServicoListarClientesImpl implements ServicoListarClientes {
     public void listarDadosClientesJson(final ServicoControleClientes controleClientes) {
         System.out.println("Total de clientes: " + controleClientes.listarTodosClientes().size());
         for (Cliente cliente : controleClientes.listarTodosClientes()) {
-            System.out.println("\n---\n");
+            System.out.println("\n--\n");
             System.out.println(cliente.toString());
         }
     }

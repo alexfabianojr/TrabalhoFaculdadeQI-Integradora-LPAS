@@ -30,8 +30,8 @@ public class BootstrapTeste {
 
         Cliente clienteB = factory.tipoB("Pedro");
 
-        Produto produtoB1 = new Produto("Calça Jeans", BigDecimal.valueOf(109.99), clienteA);
-        Produto produtoB2 = new Produto("Camiseta Luxo", BigDecimal.valueOf(349.50), clienteA);
+        Produto produtoB1 = new Produto("Calça Jeans", BigDecimal.valueOf(609.99), clienteA);
+        Produto produtoB2 = new Produto("Camiseta Luxo", BigDecimal.valueOf(949.50), clienteA);
         Produto produtoB3 = new Produto("Tenis", BigDecimal.valueOf(678.10), clienteA);
 
         clienteB.addProduto(produtoB1);
@@ -40,8 +40,8 @@ public class BootstrapTeste {
 
         Cliente clienteC = factory.tipoC("Maria");
 
-        Produto produtoC1 = new Produto("Saga Harry Potter", BigDecimal.valueOf(200.0), clienteA);
-        Produto produtoC2 = new Produto("Livros Calculo", BigDecimal.valueOf(45.79), clienteA);
+        Produto produtoC1 = new Produto("Saga Harry Potter", BigDecimal.valueOf(2200.0), clienteA);
+        Produto produtoC2 = new Produto("Livros Calculo", BigDecimal.valueOf(345.79), clienteA);
         Produto produtoC3 = new Produto("SSHQ", BigDecimal.valueOf(1200.33), clienteA);
 
         clienteC.addProduto(produtoC1);

@@ -11,7 +11,7 @@ public class Bonus {
     private Bonus() {}
 
     public Bonus(Double perc) {
-
+        this.usado = false;
         this.perc = perc;
     }
 
