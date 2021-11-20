@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class ServicoRealizarCompraImpl implements ServicoRealizarCompra {
 
-    private static final String idClienteMensagem = "\n-> Insira o ID do cliente:";
-    private static final String idProdutoMensagem = "-> Insira o ID do produto que deseja comprar:";
+    private static final String idClienteMensagem = "\n-> Insira o ID do cliente que ira comprar:";
+    private static final String idProdutoMensagem = "-> Insira o ID do produto desejado:";
     private static final String quantidadeCompraMensagem = "-> Insira a quantidade da compra:";
     private static final String idVendedorMensagem = "-> Insira o ID do vendedor do produto:";
 

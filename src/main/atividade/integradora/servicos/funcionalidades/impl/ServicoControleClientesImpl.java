@@ -38,7 +38,7 @@ public class ServicoControleClientesImpl implements ServicoControleClientes {
     public void registrarNovoCliente(Scanner sc, ServicoControleClientes controleClientes) throws Exception {
         ClienteFactory clienteFactory = new ClienteFactoryImpl();
         Cliente cliente;
-        System.out.println("Inserir o tipo do cliente");
+        System.out.println("Inserir o tipo do cliente (A - 1; B - 2; C - 3)");
         TipoClienteEnum tipoClienteEnum = TipoClienteEnum.get(sc.nextInt());
         System.out.println("Nome do cliente: ");
         String nome = sc.nextLine();
