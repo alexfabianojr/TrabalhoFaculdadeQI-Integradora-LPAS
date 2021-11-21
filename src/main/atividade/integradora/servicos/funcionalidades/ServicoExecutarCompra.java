@@ -1,6 +1,9 @@
 package main.atividade.integradora.servicos.funcionalidades;
 
+import java.util.Scanner;
+
 public interface ServicoExecutarCompra {
-    boolean isOperacaoSucesso(final String idCliente, final String idProduto, final int quantidadeCompra,
-                              final String idVendedor, final ServicoControleClientes controleClientes);
+
+    void comprar(final Scanner sc, final ServicoControleClientes controleClientes);
+
 }

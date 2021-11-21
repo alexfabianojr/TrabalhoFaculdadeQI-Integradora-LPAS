@@ -1,6 +1,7 @@
 package main.atividade.integradora.servicos.funcionalidades.impl;
 
 import main.atividade.integradora.enums.InputEnum;
+import main.atividade.integradora.factory.*;
 import main.atividade.integradora.servicos.funcionalidades.*;
 import main.atividade.integradora.teste.mock.bootstrap.BootstrapTeste;
 
@@ -22,24 +23,19 @@ public class ServicoPrincipalImpl implements ServicoPrincipal {
 
     @Override
     public boolean rodarPrograma(final Scanner sc, final ServicoControleClientes controleClientes) throws Exception {
-        ServicoControleClientes servicoControleClientes = new ServicoControleClientesImpl();
-        ServicoListarClientes servicoListarClientes = new ServicoListarClientesImpl();
-        ServicoRealizarCompra servicoRealizarCompra = new ServicoRealizarCompraImpl();
-        ServicoProduto servicoProduto = new ServicoProdutoImpl();
-        ServicoFazerPagamento servicoFazerPagamento = new ServicoFazerPagamentoImpl();
         boolean rodarPrograma = true;
         System.out.println(textoPainel);
         InputEnum input = InputEnum.get(sc.nextInt());
         switch (input) {
             case ENCERRAR_PROGRAMA -> rodarPrograma = false;
-            case CADASTRAR_USUARIO -> servicoControleClientes.registrarNovoCliente(sc, controleClientes);
-            case REALIZAR_COMPRA -> servicoRealizarCompra.comprar(sc, controleClientes);
-            case LISTAR_CLIENTES -> servicoListarClientes.listar(controleClientes);
-            case ADICIONAR_PRODUTO -> servicoProduto.adicionar(sc, controleClientes);
-            case REMOVER_PRODUTO -> servicoProduto.remover(sc, controleClientes);
+            case CADASTRAR_USUARIO -> ServicoControleClientesFactory.instance().registrarNovoCliente(sc, controleClientes);
+            case REALIZAR_COMPRA -> ServicoExecutarCompraFactory.instance().comprar(sc, controleClientes);
+            case LISTAR_CLIENTES -> ServicoListarClientesFactory.instance().listar(controleClientes);
+            case ADICIONAR_PRODUTO -> ServicoProdutoFactory.instance().adicionar(sc, controleClientes);
+            case REMOVER_PRODUTO -> ServicoProdutoFactory.instance().remover(sc, controleClientes);
             case MOCKAR_DADOS_TESTE -> BootstrapTeste.mockarDadosTeste(controleClientes);
-            case REALIZAR_PAGAMENTO -> servicoFazerPagamento.painelPagar(sc, controleClientes);
-            case LISTAR_CLIENTES_DETALHES -> servicoListarClientes.listarDadosClientesJson(controleClientes);
+            case REALIZAR_PAGAMENTO -> ServicoFazerPagamentoFactory.instance().painelPagar(sc, controleClientes);
+            case LISTAR_CLIENTES_DETALHES -> ServicoListarClientesFactory.instance().listarDadosClientesJson(controleClientes);
             default -> System.out.println("XXX");
         }
         return rodarPrograma;

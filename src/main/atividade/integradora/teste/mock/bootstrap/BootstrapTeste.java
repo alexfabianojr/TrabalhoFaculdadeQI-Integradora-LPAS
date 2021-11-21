@@ -3,7 +3,6 @@ package main.atividade.integradora.teste.mock.bootstrap;
 import main.atividade.integradora.entity.Cliente;
 import main.atividade.integradora.entity.Produto;
 import main.atividade.integradora.factory.ClienteFactory;
-import main.atividade.integradora.factory.impl.ClienteFactoryImpl;
 import main.atividade.integradora.servicos.funcionalidades.ServicoControleClientes;
 
 import java.math.BigDecimal;
@@ -16,7 +15,7 @@ public class BootstrapTeste {
 
         System.out.println("Mockando dados");
 
-        ClienteFactory factory = new ClienteFactoryImpl();
+        ClienteFactory factory = new ClienteFactory();
 
         Cliente clienteA = factory.tipoA("Joao");
 
@@ -30,7 +29,7 @@ public class BootstrapTeste {
 
         Cliente clienteB = factory.tipoB("Pedro");
 
-        Produto produtoB1 = new Produto("Calça Jeans", BigDecimal.valueOf(609.99), clienteA);
+        Produto produtoB1 = new Produto("Calï¿½a Jeans", BigDecimal.valueOf(609.99), clienteA);
         Produto produtoB2 = new Produto("Camiseta Luxo", BigDecimal.valueOf(949.50), clienteA);
         Produto produtoB3 = new Produto("Tenis", BigDecimal.valueOf(678.10), clienteA);
 
