@@ -1,9 +1,8 @@
 package main.atividade.integradora.servicos.funcionalidades.impl;
 
-import main.atividade.integradora.entity.Bonus;
-import main.atividade.integradora.entity.Cliente;
-import main.atividade.integradora.entity.Produto;
-import main.atividade.integradora.entity.Venda;
+import main.atividade.integradora.dtos.LimiteCreditoProcessadoDto;
+import main.atividade.integradora.entity.*;
+import main.atividade.integradora.enums.TipoClienteEnum;
 import main.atividade.integradora.servicos.funcionalidades.ServicoControleClientes;
 import main.atividade.integradora.servicos.funcionalidades.ServicoExecutarCompra;
 import main.atividade.integradora.servicos.utils.BonusUtils;
@@ -12,6 +11,7 @@ import main.atividade.integradora.servicos.utils.LimiteCreditoUtils;
 import main.atividade.integradora.servicos.utils.ProdutoUtils;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class ServicoExecutarCompraImpl implements ServicoExecutarCompra {
@@ -67,6 +67,13 @@ public class ServicoExecutarCompraImpl implements ServicoExecutarCompra {
                         } else {
                             System.out.println("Nenhum desconto a ser aplicado");
                             cliente.setLimiteCreditoUsado(cliente.getLimiteCreditoUsado().add(valorTotalCompra));
+                        }
+                        if (cliente.getTipoClienteEnum().equals(TipoClienteEnum.A)) {
+                            BigDecimal valorComprasPendenteAcrescerCredito = ((ClienteA) cliente).getValorComprasPendenteAcrescerCredito().add(valorTotalCompra);
+                            ((ClienteA) cliente).setValorComprasPendenteAcrescerCredito(valorComprasPendenteAcrescerCredito);
+                            LimiteCreditoProcessadoDto limiteCreditoProcessadoDto = LimiteCreditoUtils.aumentarCreditoPorCompra(((ClienteA) cliente));
+                            ((ClienteA) cliente).setValorComprasPendenteAcrescerCredito(limiteCreditoProcessadoDto.getLimiteCreditoPendenteProcessamento());
+                            cliente.setLimiteCredito(limiteCreditoProcessadoDto.getLimiteCreditoAtualizado());
                         }
                         cliente.addCompra(venda);
                     }

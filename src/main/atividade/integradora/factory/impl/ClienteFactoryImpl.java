@@ -18,6 +18,7 @@ public class ClienteFactoryImpl implements ClienteFactory {
         clienteA.setLimiteCreditoUsado(BigDecimal.ZERO);
         clienteA.setPagamentosAcumuladosParaBonus(BigDecimal.ZERO);
         clienteA.setTipoClienteEnum(TipoClienteEnum.A);
+        clienteA.setValorComprasPendenteAcrescerCredito(BigDecimal.ZERO);
         return clienteA;
     }
 
