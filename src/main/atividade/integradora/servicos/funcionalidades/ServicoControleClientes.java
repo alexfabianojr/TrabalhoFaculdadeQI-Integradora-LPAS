@@ -7,8 +7,8 @@ import java.util.Scanner;
 
 public interface ServicoControleClientes {
 
-    void registrarCliente(Cliente cliente);
-    Cliente buscarCliente(String id);
+    void registrarCliente(final Cliente cliente);
+    Cliente buscarCliente(final String id);
     List<Cliente> listarTodosClientes();
     void registrarNovoCliente(final Scanner sc, final ServicoControleClientes controleClientes) throws Exception;
 

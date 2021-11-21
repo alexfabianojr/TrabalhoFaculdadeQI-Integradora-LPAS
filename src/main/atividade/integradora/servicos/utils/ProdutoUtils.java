@@ -5,7 +5,7 @@ import main.atividade.integradora.entity.Produto;
 
 public class ProdutoUtils {
 
-    public static Produto getProdutoById(String idProduto, Cliente clienteVendedor) {
+    public static Produto getProdutoById(final String idProduto, final Cliente clienteVendedor) {
         return clienteVendedor
                 .getProdutos()
                 .parallelStream()

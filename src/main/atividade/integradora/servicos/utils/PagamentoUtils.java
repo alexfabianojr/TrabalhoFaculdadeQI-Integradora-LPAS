@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class PagamentoUtils {
 
-    public static BigDecimal pagarCreditoUsado(Cliente Cliente, BigDecimal valorPagamento) {
+    public static BigDecimal pagarCreditoUsado(final Cliente Cliente, final BigDecimal valorPagamento) {
         return Cliente.getLimiteCreditoUsado().subtract(valorPagamento);
     }
 }

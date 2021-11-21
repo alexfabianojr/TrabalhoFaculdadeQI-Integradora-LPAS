@@ -13,7 +13,7 @@ public class BonusUtils {
 
     private static final List<TipoClienteEnum> clientesQueNaoPossuemBonus = Collections.unmodifiableList(Arrays.asList(TipoClienteEnum.C));
 
-    public static <T extends Cliente> Bonus proximoBonusAtivo(T cliente) {
+    public static <T extends Cliente> Bonus proximoBonusAtivo(final T cliente) {
         return cliente
                 .getBonusCompras()
                 .stream()
@@ -22,7 +22,7 @@ public class BonusUtils {
                 .orElse(null);
     }
 
-    public static List<Bonus> resgatarBonusComprasFuturas(Cliente cliente) {
+    public static List<Bonus> resgatarBonusComprasFuturas(final Cliente cliente) {
         List<Bonus> bonuses = new ArrayList<>();
         final TipoClienteEnum tipoClienteEnum = cliente.getTipoClienteEnum();
         if (!clientesQueNaoPossuemBonus.contains(tipoClienteEnum) ) {
@@ -38,14 +38,14 @@ public class BonusUtils {
         return bonuses;
     }
 
-    private static BigDecimal valorPagoDesconto(TipoClienteEnum tipoClienteEnum) {
+    private static BigDecimal valorPagoDesconto(final TipoClienteEnum tipoClienteEnum) {
         Map<TipoClienteEnum, BigDecimal> valorPagoDesconto = new EnumMap<>(TipoClienteEnum.class);
         valorPagoDesconto.put(TipoClienteEnum.A, BigDecimal.valueOf(2000.0));
         valorPagoDesconto.put(TipoClienteEnum.B, BigDecimal.valueOf(2000.0));
         return valorPagoDesconto.get(tipoClienteEnum);
     }
 
-    private static Double percentualDesconto(TipoClienteEnum tipoClienteEnum) {
+    private static Double percentualDesconto(final TipoClienteEnum tipoClienteEnum) {
         Map<TipoClienteEnum, Double> percentualDesconto = new EnumMap<>(TipoClienteEnum.class);
         percentualDesconto.put(TipoClienteEnum.A, 0.10);
         percentualDesconto.put(TipoClienteEnum.B, 0.05);

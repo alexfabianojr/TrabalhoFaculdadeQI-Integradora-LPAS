@@ -12,7 +12,7 @@ public class ServicoControleClientesImpl implements ServicoControleClientes {
     private final List<Cliente> clientes = Collections.synchronizedList(new ArrayList<>());
 
     @Override
-    public void registrarCliente(Cliente cliente) {
+    public void registrarCliente(final Cliente cliente) {
         synchronized (this) {
             cliente.setId(UUID.randomUUID().toString());
         }
@@ -20,7 +20,7 @@ public class ServicoControleClientesImpl implements ServicoControleClientes {
     }
 
     @Override
-    public Cliente buscarCliente(String id) {
+    public Cliente buscarCliente(final String id) {
         return clientes
                 .parallelStream()
                 .filter(t -> t.getId().equals(id))
@@ -34,7 +34,7 @@ public class ServicoControleClientesImpl implements ServicoControleClientes {
     }
 
     @Override
-    public void registrarNovoCliente(Scanner sc, ServicoControleClientes controleClientes) throws Exception {
+    public void registrarNovoCliente(final Scanner sc, final ServicoControleClientes controleClientes) throws Exception {
         Cliente cliente;
         System.out.println("Inserir o tipo do cliente (A - 1; B - 2; C - 3)");
         TipoClienteEnum tipoClienteEnum = TipoClienteEnum.get(sc.nextInt());

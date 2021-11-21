@@ -5,7 +5,7 @@ import main.atividade.integradora.servicos.funcionalidades.ServicoControleClient
 
 public class ClienteUtils {
 
-    public static Cliente getClienteById(String idCliente, ServicoControleClientes controleClientes) {
+    public static Cliente getClienteById(final String idCliente, final ServicoControleClientes controleClientes) {
         return controleClientes
                 .listarTodosClientes()
                 .parallelStream()
